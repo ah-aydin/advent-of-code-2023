@@ -1,3 +1,5 @@
+/// Brute force solution, didn't put much though into it
+
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
