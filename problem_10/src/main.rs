@@ -80,9 +80,6 @@ fn determine_start_pipe_type(grid: &Vec<Vec<Pipe>>, start_pos: &Pos) -> Pipe {
 }
 
 fn part1(grid: &Vec<Vec<Pipe>>, start_pos: &Pos) {
-    let mut distances: HashMap<Pos, u32> = HashMap::new();
-    distances.insert(start_pos.clone(), 0);
-
     let start_directions = grid
         .get(start_pos.y)
         .unwrap()
@@ -90,51 +87,30 @@ fn part1(grid: &Vec<Vec<Pipe>>, start_pos: &Pos) {
         .unwrap()
         .get_directions();
 
-    start_directions.iter().for_each(|direction| {
-        let mut prev_direction = direction.clone();
-        let mut pos = start_pos.clone();
-        direction.set_next_pos(&mut pos);
+    let mut distance_counter: u32 = 1;
+    let mut prev_direction = start_directions.get(0).unwrap().clone();
+    let mut pos = start_pos.clone();
+    prev_direction.set_next_pos(&mut pos);
 
-        let mut distance_counter: u32 = 1;
-        if let Some(distance) = distances.get_mut(&pos) {
-            if *distance > distance_counter {
-                *distance = distance_counter;
-            }
-        } else {
-            distances.insert(pos.clone(), distance_counter);
-        }
-
-        loop {
-            prev_direction = grid
-                .get(pos.y)
-                .unwrap()
-                .get(pos.x)
-                .unwrap()
-                .get_next_direction(&prev_direction);
-            prev_direction.set_next_pos(&mut pos);
-            if pos == *start_pos {
-                break;
-            }
-
-            distance_counter += 1;
-            if let Some(distance) = distances.get_mut(&pos) {
-                if *distance > distance_counter {
-                    *distance = distance_counter;
-                }
-            } else {
-                distances.insert(pos.clone(), distance_counter);
-            }
-        }
-    });
-
-    println!(
-        "Part 1: {:?}",
-        distances
-            .iter()
-            .max_by(|(_, d1), (_, d2)| d1.cmp(d2))
+    loop {
+        prev_direction = grid
+            .get(pos.y)
             .unwrap()
-    );
+            .get(pos.x)
+            .unwrap()
+            .get_next_direction(&prev_direction);
+        prev_direction.set_next_pos(&mut pos);
+        if pos == *start_pos {
+            break;
+        }
+
+        distance_counter += 1;
+    }
+
+    println!("Part 1: {:?}", (distance_counter + 1) / 2);
 }
+
+fn part2(grid: &Vec<Vec<Pipe>>, start_pos: &Pos) {}
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -176,4 +152,5 @@ fn main() {
         .unwrap() = determine_start_pipe_type(&grid, &start_pos);
 
     part1(&grid, &start_pos);
+    part2(&grid, &start_pos);
 }
