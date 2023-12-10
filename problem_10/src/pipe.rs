@@ -4,7 +4,7 @@ pub struct Pos {
     pub y: usize,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Copy)]
 pub enum Direction {
     Up,
     Down,
@@ -23,7 +23,7 @@ impl Direction {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Pipe {
     Ground,
     Vertical,
