@@ -116,7 +116,7 @@ fn part1(grid: &Vec<Vec<Pipe>>, start_pos: &Pos) -> HashSet<Pos> {
     part_of_the_loop
 }
 
-fn part2(grid: &Vec<Vec<Pipe>>, start_pos: &Pos, grid_size_x: usize, grid_size_y: usize) {
+fn part2(grid: &Vec<Vec<Pipe>>,  grid_size_x: usize, grid_size_y: usize) {
     let mut horizontal_set: HashSet<Pos> = HashSet::new();
     for (y, line) in grid.iter().enumerate() {
         let mut within = false;
@@ -306,5 +306,5 @@ fn main() {
         }
     }
 
-    part2(&grid, &start_pos, grid_size_x, grid_size_y);
+    part2(&grid,  grid_size_x, grid_size_y);
 }
