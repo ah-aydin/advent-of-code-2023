@@ -89,6 +89,8 @@ fn rotate(platform: &mut Platform) {
             }
         }
     }
+    println!("North");
+    print_platform(&platform);
 
     // West
     for row in 0..row_count {
@@ -107,6 +109,8 @@ fn rotate(platform: &mut Platform) {
             }
         }
     }
+    println!("West");
+    print_platform(&platform);
 
     // South
     for col in 0..col_count {
@@ -125,6 +129,8 @@ fn rotate(platform: &mut Platform) {
             }
         }
     }
+    println!("South");
+    print_platform(&platform);
 
     // East
     for row in 0..row_count {
@@ -143,6 +149,8 @@ fn rotate(platform: &mut Platform) {
             }
         }
     }
+    println!("East");
+    print_platform(&platform);
 }
 
 fn part2(platform: Platform) -> usize {
@@ -153,20 +161,15 @@ fn part2(platform: Platform) -> usize {
     let num_iters = 1000000000;
 
     for i in 0..num_iters {
-        rotate(&mut platform);
-        println!("After {} cycles", i + 1);
+        println!("After {} cycles", i);
         print_platform(&platform);
+        rotate(&mut platform);
 
         if let Some(history_index) = history.iter().position(|plat| *plat == platform) {
-            println!(
-                "h.len = {} | i = {} | h_index = {}",
-                history.len(),
-                i + 1,
-                history_index
-            );
             history.drain(0..history_index);
             let final_index: usize = (num_iters - (i + 1)) % history.len();
-            println!("h.len = {} | final_index = {final_index}", history.len());
+            println!("After {num_iters} cycles");
+            print_platform(&history.get(final_index).unwrap());
             history
                 .iter()
                 .enumerate()
