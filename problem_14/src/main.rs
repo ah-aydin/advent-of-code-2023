@@ -142,15 +142,32 @@ fn rotate(platform: &mut Platform) {
                     *platform.get_mut(row).unwrap().get_mut(col_pos).unwrap() = Tile::Round;
                     col_pos -= 1;
                 }
-                Tile::Cube => {
-                    col_pos = col - 1;
-                }
+                Tile::Cube => 
+                    col_pos = col - 1
+                ,
                 Tile::Empty => {}
             }
         }
     }
     println!("East");
     print_platform(&platform);
+}
+
+fn part2_calculate(platform: &Platform) -> usize {
+    let mut result = 0;
+    let row_count = platform.len();
+    let col_count = platform.get(0).unwrap().len();
+
+    for col in 0..col_count {
+        for row in 0..row_count {
+            match platform.get(row).unwrap().get(col).unwrap() {
+                Tile::Round => result += row_count - row,
+                _ => {}
+            }
+        }
+    }
+
+    result
 }
 
 fn part2(platform: Platform) -> usize {
@@ -174,11 +191,11 @@ fn part2(platform: Platform) -> usize {
                 .iter()
                 .enumerate()
                 .for_each(|(i, p)| println!("{i} {}", part1(&p)));
-            return part1(&history.get(final_index).unwrap());
+            return part2_calculate(&history.get(final_index).unwrap());
         }
         history.push(platform.to_vec());
     }
-    return part1(&platform);
+    return part2_calculate(&platform);
 }
 
 fn main() {

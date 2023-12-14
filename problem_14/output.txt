@@ -669,4 +669,4 @@ After 1000000000 cycles
 4 106
 5 111
 6 114
-Result part2: 103
+Result part2: 64
