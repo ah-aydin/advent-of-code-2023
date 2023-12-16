@@ -3,6 +3,7 @@ use std::{
     fmt::Display,
     fs::File,
     io::{BufRead, BufReader},
+    usize,
 };
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -15,14 +16,14 @@ enum Direction {
 
 #[derive(Debug, Clone)]
 /// Stores the directions that are coming inwards the tile
-struct Energied {
+struct Energzied {
     energized: bool,
     directions: Vec<Direction>,
 }
 
-impl Energied {
-    fn new() -> Energied {
-        Energied {
+impl Energzied {
+    fn new() -> Energzied {
+        Energzied {
             energized: false,
             directions: vec![],
         }
@@ -38,7 +39,7 @@ impl Energied {
     }
 }
 
-impl Display for Energied {
+impl Display for Energzied {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self.energized {
             true => write!(f, "#"),
@@ -149,34 +150,19 @@ impl Tile {
     }
 }
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() != 2 {
-        println!("Usage: problem_16 [puzzle_input_file]");
-        return;
-    }
-    let lines: Vec<String> = BufReader::new(File::open(args.get(1).unwrap()).unwrap())
-        .lines()
-        .map(|line_result| line_result.unwrap())
-        .collect();
+fn calculate(grid: &Vec<Vec<Tile>>, start_beam: Beam) -> usize {
+    let row_count = grid.len();
+    let col_count = grid.get(0).unwrap().len();
 
-    let row_count = lines.len();
-    let col_count = lines.get(0).unwrap().len();
-
-    let mut energized: Vec<Vec<Energied>> = vec![vec![Energied::new(); col_count]; row_count];
+    let mut energized: Vec<Vec<Energzied>> = vec![vec![Energzied::new(); col_count]; row_count];
     energized
-        .get_mut(0)
+        .get_mut(start_beam.pos.row as usize)
         .unwrap()
-        .get_mut(0)
+        .get_mut(start_beam.pos.col as usize)
         .unwrap()
-        .add_direction(Direction::Right);
+        .add_direction(start_beam.direction.clone());
 
-    let grid: Vec<Vec<Tile>> = lines
-        .iter()
-        .map(|line| line.chars().map(|c| Tile::new(c)).collect())
-        .collect();
-
-    let mut beams: Vec<Beam> = vec![Beam::new(Direction::Right, 0, 0)];
+    let mut beams: Vec<Beam> = vec![start_beam];
     let beam = beams.pop().unwrap();
     let pos = beam.pos;
     let directions = grid
@@ -189,7 +175,6 @@ fn main() {
     directions.iter().for_each(|direction| {
         beams.push(Beam::new(direction.clone(), pos.row, pos.col));
     });
-    println!("{:?}", energized.get(0).unwrap().get(0).unwrap());
 
     while !beams.is_empty() {
         let beam = beams.pop().unwrap();
@@ -224,22 +209,72 @@ fn main() {
             });
     }
 
-    energized.iter().for_each(|line| {
-        line.iter().for_each(|item| print!("{item}"));
-        println!();
-    });
-
-    println!(
-        "Result part1: {}",
-        energized
-            .iter()
-            .map(|row| row
-                .iter()
+    energized
+        .iter()
+        .map(|row| {
+            row.iter()
                 .map(|item| match item.energized {
                     true => 1,
                     false => 0,
                 })
-                .sum::<usize>())
-            .sum::<usize>()
+                .sum::<usize>()
+        })
+        .sum()
+}
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() != 2 {
+        println!("Usage: problem_16 [puzzle_input_file]");
+        return;
+    }
+    let lines: Vec<String> = BufReader::new(File::open(args.get(1).unwrap()).unwrap())
+        .lines()
+        .map(|line_result| line_result.unwrap())
+        .collect();
+
+    let grid: Vec<Vec<Tile>> = lines
+        .iter()
+        .map(|line| line.chars().map(|c| Tile::new(c)).collect())
+        .collect();
+
+    println!(
+        "Result part1: {}",
+        calculate(&grid, Beam::new(Direction::Right, 0, 0))
     );
+
+    let row_count = grid.len();
+    let col_count = grid.get(0).unwrap().len();
+
+    let mut max: usize = 0;
+    for col in 0..col_count {
+        max = max.max(calculate(
+            &grid,
+            Beam::new(Direction::Down, 0, i64::from(col as u32)),
+        ));
+        max = max.max(calculate(
+            &grid,
+            Beam::new(
+                Direction::Up,
+                i64::from((row_count - 1) as u32),
+                i64::from(col as u32),
+            ),
+        ));
+    }
+    for row in 0..row_count {
+        max = max.max(calculate(
+            &grid,
+            Beam::new(Direction::Right, i64::from(row as u32), 0),
+        ));
+        max = max.max(calculate(
+            &grid,
+            Beam::new(
+                Direction::Left,
+                i64::from(row as u32),
+                i64::from((col_count - 1) as u32),
+            ),
+        ));
+    }
+
+    println!("Result part2: {max}");
 }
