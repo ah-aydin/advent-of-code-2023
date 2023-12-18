@@ -112,7 +112,7 @@ impl TileWithoutHeat {
     }
 }
 
-fn dijkstra(grid: &Grid) -> u64 {
+fn dijkstra_part1(grid: &Grid) -> u64 {
     let row_count = grid.len();
     let col_count = grid.get(0).unwrap().len();
 
@@ -199,6 +199,95 @@ fn dijkstra(grid: &Grid) -> u64 {
     0
 }
 
+fn dijkstra_part2(grid: &Grid) -> u64 {
+    let row_count = grid.len();
+    let col_count = grid.get(0).unwrap().len();
+
+    let mut visited: HashSet<TileWithoutHeat> = HashSet::new();
+    let mut heap: BinaryHeap<Tile> = BinaryHeap::new();
+    let first_right_tile = Tile::new(
+        *grid.get(0).unwrap().get(1).unwrap(),
+        0,
+        1,
+        Direction::Right,
+        1,
+    );
+    let first_down_tile = Tile::new(
+        *grid.get(1).unwrap().get(0).unwrap(),
+        1,
+        0,
+        Direction::Down,
+        1,
+    );
+
+    heap.push(first_right_tile);
+    heap.push(first_down_tile);
+
+    while !heap.is_empty() {
+        let tile = heap.pop().unwrap();
+
+        if tile.row + 1 == row_count as i64 && tile.col + 1 == col_count as i64 {
+            return tile.heat;
+        }
+
+        let tile_without_heat = TileWithoutHeat::from_tile(tile.clone());
+        if visited.contains(&tile_without_heat) {
+            continue;
+        }
+
+        visited.insert(tile_without_heat);
+
+        if tile.same_direction_count < 10 {
+            let (next_row, next_col) = tile.get_next_pos();
+            if 0 <= next_row
+                && next_row < row_count as i64
+                && 0 <= next_col
+                && next_col < col_count as i64
+            {
+                heap.push(Tile::new(
+                    tile.heat
+                        + grid
+                            .get(next_row as usize)
+                            .unwrap()
+                            .get(next_col as usize)
+                            .unwrap(),
+                    next_row,
+                    next_col,
+                    tile.direction,
+                    tile.same_direction_count + 1,
+                ));
+            }
+        }
+
+        if tile.same_direction_count > 3 {
+            for direction in tile.direction.get_90_deg_turn_directions() {
+                let (row_change, col_change) = direction.get_move_values();
+                let (next_row, next_col) = (tile.row + row_change, tile.col + col_change);
+                if 0 <= next_row
+                    && next_row < row_count as i64
+                    && 0 <= next_col
+                    && next_col < col_count as i64
+                {
+                    heap.push(Tile::new(
+                        tile.heat
+                            + grid
+                                .get(next_row as usize)
+                                .unwrap()
+                                .get(next_col as usize)
+                                .unwrap(),
+                        next_row,
+                        next_col,
+                        direction,
+                        1,
+                    ));
+                }
+            }
+        }
+    }
+
+    0
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     let grid: Grid = BufReader::new(File::open(args.get(1).unwrap()).unwrap())
@@ -212,7 +301,9 @@ fn main() {
         })
         .collect();
 
-    let part1: u64 = dijkstra(&grid);
+    let part1 = dijkstra_part1(&grid);
+    let part2 = dijkstra_part2(&grid);
 
     println!("Result part1: {}", part1);
+    println!("Result part2: {}", part2);
 }
