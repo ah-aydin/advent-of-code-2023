@@ -1,0 +1,136 @@
+Result part1: 19114
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }], entering at 'in'
+-----------
+Condition { property: Shiny, condition_type: Less, check_var: 1351, destination_state: "px" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 1350 }] to 'px' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 4000 }]
+Remaining to 'qqz'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 4000 }], entering at 'qqz'
+-----------
+Condition { property: Shiny, condition_type: Greater, check_var: 2770, destination_state: "qs" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 4000 }] to 'qs' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }]
+-----------
+Condition { property: Musical, condition_type: Less, check_var: 1801, destination_state: "hdj" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 1800 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }] to 'hdj' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1801, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }]
+Remaining to 'R'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1801, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 1800 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }], entering at 'hdj'
+-----------
+Condition { property: Musical, condition_type: Greater, check_var: 838, destination_state: "A" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 839, end: 1800 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }] to 'A' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }]
+Remaining to 'pv'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }], entering at 'pv'
+-----------
+Condition { property: Aerodynamic, condition_type: Greater, check_var: 1716, destination_state: "R" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1717, end: 4000 }, Range { start: 1351, end: 2770 }] to 'R' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1, end: 1716 }, Range { start: 1351, end: 2770 }]
+Remaining to 'A'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1, end: 1716 }, Range { start: 1351, end: 2770 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 838 }, Range { start: 1717, end: 4000 }, Range { start: 1351, end: 2770 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 839, end: 1800 }, Range { start: 1, end: 4000 }, Range { start: 1351, end: 2770 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 4000 }], entering at 'qs'
+-----------
+Condition { property: Shiny, condition_type: Greater, check_var: 3448, destination_state: "A" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 3449, end: 4000 }] to 'A' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }]
+Remaining to 'lnx'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }], entering at 'lnx'
+-----------
+Condition { property: Musical, condition_type: Greater, check_var: 1548, destination_state: "A" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1549, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }] to 'A' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 1548 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }]
+Remaining to 'A'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 1548 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1549, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2771, end: 3448 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 3449, end: 4000 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 1350 }], entering at 'px'
+-----------
+Condition { property: Aerodynamic, condition_type: Less, check_var: 2006, destination_state: "qkq" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }] to 'qkq' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 1350 }]
+-----------
+Condition { property: Musical, condition_type: Greater, check_var: 2090, destination_state: "A" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 2091, end: 4000 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 1350 }] to 'A' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 1350 }]
+Remaining to 'rfg'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 1350 }], entering at 'rfg'
+-----------
+Condition { property: Shiny, condition_type: Less, check_var: 537, destination_state: "gd" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 536 }] to 'gd' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 537, end: 1350 }]
+-----------
+Condition { property: Extreme, condition_type: Greater, check_var: 2440, destination_state: "R" }
+Continue range: [Range { start: 2441, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 537, end: 1350 }] to 'R' 
+Remaining: [Range { start: 1, end: 2440 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 537, end: 1350 }]
+Remaining to 'A'
+===========================
+Processing [Range { start: 1, end: 2440 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 537, end: 1350 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 2441, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 537, end: 1350 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 536 }], entering at 'gd'
+-----------
+Condition { property: Aerodynamic, condition_type: Greater, check_var: 3333, destination_state: "R" }
+Continue range: [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 3334, end: 4000 }, Range { start: 1, end: 536 }] to 'R' 
+Remaining: [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 3333 }, Range { start: 1, end: 536 }]
+Remaining to 'R'
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 2006, end: 3333 }, Range { start: 1, end: 536 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 2090 }, Range { start: 3334, end: 4000 }, Range { start: 1, end: 536 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 2091, end: 4000 }, Range { start: 2006, end: 4000 }, Range { start: 1, end: 1350 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }], entering at 'qkq'
+-----------
+Condition { property: Extreme, condition_type: Less, check_var: 1416, destination_state: "A" }
+Continue range: [Range { start: 1, end: 1415 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }] to 'A' 
+Remaining: [Range { start: 1416, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }]
+Remaining to 'crn'
+===========================
+Processing [Range { start: 1416, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }], entering at 'crn'
+-----------
+Condition { property: Extreme, condition_type: Greater, check_var: 2662, destination_state: "A" }
+Continue range: [Range { start: 2663, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }] to 'A' 
+Remaining: [Range { start: 1416, end: 2662 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }]
+Remaining to 'R'
+===========================
+Processing [Range { start: 1416, end: 2662 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }], entering at 'R'
+Rejected
+===========================
+Processing [Range { start: 2663, end: 4000 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }], entering at 'A'
+Accepted
+===========================
+Processing [Range { start: 1, end: 1415 }, Range { start: 1, end: 4000 }, Range { start: 1, end: 2005 }, Range { start: 1, end: 1350 }], entering at 'A'
+Accepted
+Result part2: 167409079868000
